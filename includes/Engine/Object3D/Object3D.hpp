@@ -2,6 +2,7 @@
 
 #include <Object3D/BasicObject.hpp>
 #include <Object3D/Geometry.hpp>
+#include <Material/Material.hpp>
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 #include <vector>
@@ -41,24 +42,33 @@ public:
      */
     void setGeometry(Geometry newGeometry);
 
+    Material getMaterial() const;
+
+    void setMaterial(const Material newMaterial);
+
     /**
      * @brief Clears OpenGL buffers associated with the object.
      * This function releases resources associated with the Vertex Array, Vertex Buffer, and Element Buffer Objects.
      */
     void clearBuffers();
 
+    void updateGLBuffers();
+
 protected:
     /**
      * @brief Creates OpenGL buffers for the object's geometry data.
      * This function is internally used to generate Vertex Array, Vertex Buffer, and Element Buffer Objects.
      */
-    void createGLBuffer();
+    void createGLBuffers();
 
 private:
+
     GLuint VAO = 0;             ///< The Vertex Array Object ID associated with the object.
     GLuint VBO = 0;             ///< The Vertex Buffer Object ID associated with the object.
+    GLuint CBO = 0;             ///< The Color Buffer Object ID associated with the object.
     GLuint EBO = 0;             ///< The Element Buffer Object ID associated with the object.
 
     Geometry geometry;          ///< The geometry data associated with the object.
-    // Material material;
+    Material material;          ///< The material data associated with the object.
+
 };

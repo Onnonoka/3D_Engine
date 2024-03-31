@@ -16,7 +16,7 @@ public:
     /**
      * @brief Pure virtual function to render the scene.
      */
-    virtual void render(const Camera& camera, const Object3D& object) = 0;
+    virtual void render(const Camera& camera, Object3D& object) = 0;
 
     /**
     * @brief Destructor responsible for freeing shader resources.

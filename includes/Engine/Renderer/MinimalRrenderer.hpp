@@ -23,5 +23,5 @@ public:
      * @param camera The camera object defining the view and projection matrices.
      * @param object The Object3D object to be rendered.
      */
-    void render(const Camera& camera, const Object3D& object) override;
+    void render(const Camera& camera, Object3D& object) override;
 };

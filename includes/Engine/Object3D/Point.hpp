@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Object3D/BasicObject.hpp>
 #include <glm/glm.hpp>
 
@@ -39,4 +41,20 @@ public:
      * @return True if the two points are not equal, false otherwise.
      */
     bool operator!=(const Point& other) const;
+
 };
+
+namespace std {
+    template <>
+    struct hash<Point> {
+        std::size_t operator()(const Point& p) const {
+            // Combine the hash values of x, y, and z using XOR (^) to reduce collisions
+            std::size_t hashValue = 0;
+            hash<float> floatHasher;
+            hashValue ^= floatHasher(p.getPosition().x) + 0x9e3779b9 + (hashValue << 6) + (hashValue >> 2);
+            hashValue ^= floatHasher(p.getPosition().y) + 0x9e3779b9 + (hashValue << 6) + (hashValue >> 2);
+            hashValue ^= floatHasher(p.getPosition().z) + 0x9e3779b9 + (hashValue << 6) + (hashValue >> 2);
+            return hashValue;
+        }
+    };
+}

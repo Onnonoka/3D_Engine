@@ -3,13 +3,13 @@
 #include <iostream>
 #include <Error/EngineError.hpp>
 
-Geometry::Geometry(const std::vector<std::vector<Point>> faces) {
+Geometry::Geometry(const std::vector<std::vector<Point>> faces)
+    : Dirty(2) {
     createFaces(faces);
 }
 
 Geometry::Geometry(const std::vector<Face> faces) {
     addFaces(faces);
-    std::cout << "COMPLETED addFaces!!!!" << std::endl;
 }
 
 void Geometry::createFace(const std::vector<Point> newFace) {
@@ -25,12 +25,16 @@ void Geometry::createFace(const std::vector<Point> newFace) {
         if (it == points.end()) {
             // If it not exist we create it at the end of the points vector
             points.push_back(point);
+            // We set the Verticies Dirty Flag to true for Object3D reconstructions.
+            makeDirty(VERTICES);
         }
 
         // Push the point face index into faces vector
         // if std::find don't find the element it ref after the __last element
         // index should be equal to points.size()
         faces.push_back(static_cast<unsigned int>(index));
+        // We set the INDICES Dirty Flag to true for Object3D reconstructions.
+        makeDirty(INDICES);
     }
 }
 

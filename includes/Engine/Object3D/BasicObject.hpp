@@ -3,7 +3,6 @@
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 #include <vector>
-#include <Material/Material.hpp>
 
 /**
  * @brief Represents a 3D object with position, rotation, and scale.

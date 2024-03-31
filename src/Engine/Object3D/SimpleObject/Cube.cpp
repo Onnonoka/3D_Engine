@@ -1,4 +1,5 @@
 #include <Object3D/SimpleObject/Cube.hpp>
+#include <Basic/Color.hpp>
 #include <Error/EngineError.hpp>
 #include <iostream>
 #include <memory>
@@ -49,5 +50,8 @@ Cube::Cube(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
     // Bind the geometry to this object
     setGeometry(geo);
 
-    createGLBuffer();
+    // Material material = getMaterial();
+    // material.setPointColor(p0, Color::Red);
+    // setMaterial(material);
+
 }

@@ -1,13 +1,22 @@
+#pragma once
+
 #include <Object3D/BasicObject.hpp>
 #include <Object3D/Face.hpp>
+#include <Basic/Dirty.hpp>
 #include <vector>
 #include <memory>
 
 /**
  * @brief Represents a geometric structure composed of faces and points.
  */
-class Geometry {
+class Geometry : public Dirty {
 public:
+
+    enum DirtyField {
+        VERTICES = 0,
+        INDICES = 1
+    };
+
     Geometry() = default;
 
     /**

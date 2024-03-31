@@ -23,6 +23,7 @@ int main(int argc, char *argv[]) {
     camera.setScreenSize(1920, 1080);
     camera.setPosition(glm::vec3(-2, 0, 0));
     counter.start();
+    
     while (!window.shouldClose()) {
         window.processInput();
 

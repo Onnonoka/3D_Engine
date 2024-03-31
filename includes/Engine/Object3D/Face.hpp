@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Object3D/BasicObject.hpp>
 #include <Object3D/Point.hpp>
 #include <vector>

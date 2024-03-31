@@ -38,6 +38,7 @@ set(SOURCES
     ${SOURCE_DIR}/Engine/Basic/Window.cpp
     ${SOURCE_DIR}/Engine/Basic/FPSCounter.cpp
     ${SOURCE_DIR}/Engine/Basic/Color.cpp
+    ${SOURCE_DIR}/Engine/Basic/Dirty.cpp
     # Engine Renderer
     ${SOURCE_DIR}/Engine/Renderer/Renderer.cpp
     ${SOURCE_DIR}/Engine/Renderer/MinimalRenderer.cpp

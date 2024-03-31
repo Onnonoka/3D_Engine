@@ -13,8 +13,10 @@ MinimalRenderer::MinimalRenderer() {
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 }
 
-void MinimalRenderer::render(const Camera& camera, const Object3D& object) {
+void MinimalRenderer::render(const Camera& camera, Object3D& object) {
     if (vertexShader != 0 && fragmentShader != 0 && shaderProgram != 0) {
+
+        object.updateGLBuffers();
 
         glUseProgram(shaderProgram);
         CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR, {std::to_string(static_cast<unsigned int>(shaderProgram))});
