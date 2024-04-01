@@ -24,11 +24,17 @@ public:
     */
     ~Renderer();
 
+    void setBGColor(const Color color = Color::LightGray);
+    
+    Color getBGColor() const;
+
 protected:
 
-    GLuint vertexShader = 0;    ///< Vertex shader ID.
-    GLuint fragmentShader = 0;  ///< Fragment shader ID.
-    GLuint shaderProgram = 0;   ///< Shader program ID.
+    GLuint vertexShader = 0;            ///< Vertex shader ID.
+    GLuint fragmentShader = 0;          ///< Fragment shader ID.
+    GLuint shaderProgram = 0;           ///< Shader program ID.
+
+    Color bgColor = Color::LightGray;   ///< The background color.
 
     /**
      * Loads and compiles shaders from the specified files, then creates the shader program.
@@ -36,4 +42,5 @@ protected:
      * @param fragmentShaderFile Path to the fragment shader file.
      */
     void loadShaders(const std::string& vertexShaderFile, const std::string& fragmentShaderFile);
+
 };

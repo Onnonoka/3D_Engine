@@ -34,8 +34,8 @@ glm::mat4 Camera::getProjectionMatrix() const {
 void Camera::updateViewMatrix() {
     glm::vec3 direction = glm::vec3(
         cos(glm::radians(getRotation().y)) * cos(glm::radians(getRotation().x)),
-        sin(glm::radians(getRotation().x)),
-        sin(glm::radians(getRotation().y)) * cos(glm::radians(getRotation().x))
+        sin(glm::radians(getRotation().y)) * cos(glm::radians(getRotation().x)),
+        sin(glm::radians(getRotation().x))
     );
     glm::vec3 pointToLook = getPosition() + direction;
     viewMatrix = glm::lookAt(getPosition(), pointToLook, glm::vec3(0.0f, 0.0f, 1.0f));

@@ -21,16 +21,17 @@ public:
     Color() : glm::vec3(0.0f, 0.0f, 0.0f) {}
 
     // Definition of basic colors
-    static const Color Red;     ///< Red color.
-    static const Color Green;   ///< Green color.
-    static const Color Blue;    ///< Blue color.
-    static const Color Yellow;  ///< Yellow color.
-    static const Color Cyan;    ///< Cyan color.
-    static const Color Magenta; ///< Magenta color.
-    static const Color White;   ///< White color.
-    static const Color Black;   ///< Black color.
-    static const Color Gray;    ///< Gray color.
-    static const Color Orange;  ///< Orange color.
-    static const Color Purple;  ///< Purple color.
-    static const Color Pink;    ///< Pink color.
+    static const Color Red;         ///< Red color.
+    static const Color Green;       ///< Green color.
+    static const Color Blue;        ///< Blue color.
+    static const Color Yellow;      ///< Yellow color.
+    static const Color Cyan;        ///< Cyan color.
+    static const Color Magenta;     ///< Magenta color.
+    static const Color White;       ///< White color.
+    static const Color Black;       ///< Black color.
+    static const Color Gray;        ///< Gray color.
+    static const Color LightGray;   ///< LightGray color.
+    static const Color Orange;      ///< Orange color.
+    static const Color Purple;      ///< Purple color.
+    static const Color Pink;        ///< Pink color.
 };

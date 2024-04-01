@@ -175,9 +175,6 @@ void Object3D::render(const Camera& camera, const glm::mat4 parentModelMatrix, c
     updateGLBuffers();
     glm::mat4 global_transform = parentModelMatrix * getTransformationMatrix();
 
-    glUseProgram(shaderProgram);
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR, {std::to_string(static_cast<unsigned int>(shaderProgram))});
-
     glBindVertexArray(getVAO());
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 

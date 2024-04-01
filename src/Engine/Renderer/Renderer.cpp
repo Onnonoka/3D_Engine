@@ -5,6 +5,14 @@
 #include "glad/glad.h"
 #include <Error/EngineError.hpp>
 
+void Renderer::setBGColor(const Color color) {
+    bgColor = color;
+}
+
+Color Renderer::getBGColor() const {
+    return bgColor;
+}
+
 void Renderer::loadShaders(const std::string& vertexShaderFile, const std::string& fragmentShaderFile) {
     std::ifstream vertexShaderStream(vertexShaderFile);
     std::ifstream fragmentShaderStream(fragmentShaderFile);

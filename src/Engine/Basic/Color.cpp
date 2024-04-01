@@ -10,6 +10,7 @@ const Color Color::Magenta = Color(1.0f, 0.0f, 1.0f);
 const Color Color::White = Color(1.0f, 1.0f, 1.0f);
 const Color Color::Black = Color(0.0f, 0.0f, 0.0f);
 const Color Color::Gray = Color(0.5f, 0.5f, 0.5f);
+const Color Color::LightGray = Color(0.8f, 0.8f, 0.8f);
 const Color Color::Orange = Color(1.0f, 0.5f, 0.0f);
 const Color Color::Purple = Color(0.5f, 0.0f, 0.5f);
 const Color Color::Pink = Color(1.0f, 0.5f, 0.5f);
