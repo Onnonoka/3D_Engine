@@ -24,4 +24,5 @@ public:
      * @param object The Object3D object to be rendered.
      */
     void render(const Camera& camera, Object3D& object) override;
+
 };

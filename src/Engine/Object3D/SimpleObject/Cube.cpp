@@ -50,8 +50,4 @@ Cube::Cube(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
     // Bind the geometry to this object
     setGeometry(geo);
 
-    // Material material = getMaterial();
-    // material.setPointColor(p0, Color::Red);
-    // setMaterial(material);
-
 }

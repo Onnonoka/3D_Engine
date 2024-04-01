@@ -3,8 +3,7 @@
 #include <iostream>
 #include <Error/EngineError.hpp>
 
-Geometry::Geometry(const std::vector<std::vector<Point>> faces)
-    : Dirty(2) {
+Geometry::Geometry(const std::vector<std::vector<Point>> faces) {
     createFaces(faces);
 }
 
@@ -80,4 +79,13 @@ size_t Geometry::getIndexBufferDataSize() const {
 
 size_t Geometry::getArrayBufferDataSize() const {
     return points.size() * sizeof(glm::vec3);
+}
+
+bool Geometry::operator==(const Geometry& other) const {
+    // Comparez les membres de la géométrie un par un
+    return (
+        getDirtyFlags() == other.getDirtyFlags() &&
+        faces == other.faces &&
+        points == other.points
+    );
 }

@@ -3,6 +3,7 @@
 #include <Object3D/BasicObject.hpp>
 #include <Object3D/Geometry.hpp>
 #include <Material/Material.hpp>
+#include <Object3D/Camera.hpp>
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 #include <vector>
@@ -34,16 +35,24 @@ public:
      * @brief Retrieves the geometry of the object.
      * @return The geometry of the object.
      */
-    Geometry getGeometry() const;
+    Geometry& getGeometry();
 
     /**
      * @brief Sets the geometry of the object.
      * @param newGeometry The new geometry to set.
      */
-    void setGeometry(Geometry newGeometry);
+    void setGeometry(const Geometry newGeometry);
 
-    Material getMaterial() const;
+    /**
+     * @brief Retrieves the material of the object.
+     * @return The material of the object.
+     */
+    Material& getMaterial();
 
+    /**
+     * @brief Sets the material of the object.
+     * @param newMaterial The new material to set.
+     */
     void setMaterial(const Material newMaterial);
 
     /**
@@ -52,7 +61,29 @@ public:
      */
     void clearBuffers();
 
+    /**
+     * @brief Updates OpenGL buffers associated with the object if necessary.
+     * This function is internally used to update buffers based on changes in geometry or material.
+     */
     void updateGLBuffers();
+
+    /**
+     * @brief Surcharge de l'opérateur == pour comparer deux objets 3D.
+     * @param other L'autre objet 3D à comparer.
+     * @return true si les deux objets sont égaux, false sinon.
+     */
+    bool operator==(const Object3D& other) const;
+
+    /**
+     * @brief Renders the object using the specified camera and parent model matrix.
+     * 
+     * This function renders the object using the provided camera and parent model matrix.
+     * 
+     * @param camera The camera to use for rendering.
+     * @param parentModelMatrix The parent model matrix representing the transformation of the parent object.
+     * @param shaderProgram The shader program to use for rendering.
+     */
+    virtual void render(const Camera& camera, const glm::mat4 parentModelMatrix, const GLuint shaderProgram);
 
 protected:
     /**

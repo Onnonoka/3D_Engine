@@ -91,9 +91,15 @@ public:
      */
     size_t getArrayBufferDataSize() const;
 
+    /**
+     * @brief Surcharge de l'opérateur == pour comparer deux géométries.
+     * @param other L'autre géométrie à comparer.
+     * @return true si les deux géométries sont égales, false sinon.
+     */
+    bool operator==(const Geometry& other) const;
+
 private:
 
     std::vector<unsigned int> faces;    ///< The list of indices representing the faces of the geometry.
-
     std::vector<Point> points;          ///< The list of points defining the geometry.
 };

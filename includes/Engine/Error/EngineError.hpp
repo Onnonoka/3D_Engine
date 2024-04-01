@@ -16,6 +16,7 @@ enum class ErrorCodes : unsigned int {
 enum class EngineError : unsigned int {
     INITIALIZATION_ERROR = static_cast<unsigned int>(ErrorCodes::ENGINE_ERROR_START),
     WINDOW_CREATE_ERROR,
+    DIRTY_OUT_OF_RANGE
 };
 
 enum class RenderError : unsigned int {

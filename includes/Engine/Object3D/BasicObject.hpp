@@ -86,6 +86,13 @@ public:
      */
     glm::mat4 getTransformationMatrix() const;
 
+    /**
+     * @brief Surcharge de l'opérateur == pour comparer deux objets de base.
+     * @param other L'autre objet de base à comparer.
+     * @return true si les deux objets de base sont égaux, false sinon.
+     */
+    bool operator==(const BasicObject& other) const;
+
 private:
     glm::vec3 position;                     ///< The position of the object.
     glm::vec3 rotation;                     ///< The rotation of the object.

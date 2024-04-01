@@ -48,6 +48,7 @@ set(SOURCES
     ${SOURCE_DIR}/Engine/Object3D/Face.cpp
     ${SOURCE_DIR}/Engine/Object3D/Geometry.cpp
     ${SOURCE_DIR}/Engine/Object3D/Object3D.cpp
+    ${SOURCE_DIR}/Engine/Object3D/Group.cpp
     ${SOURCE_DIR}/Engine/Object3D/Camera.cpp
     ${SOURCE_DIR}/Engine/Object3D/SimpleObject/Cube.cpp
     # Engine Material

@@ -78,11 +78,21 @@ glm::mat4 BasicObject::getTransformationMatrix() const {
 void BasicObject::createTransformationMatrix() {
     // Build identity matrixe
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::scale(model, scale);
+    model = glm::translate(model, position);
     model = glm::rotate(model, glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
     model = glm::rotate(model, glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
     model = glm::rotate(model, glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
-    model = glm::translate(model, position);
+    model = glm::scale(model, scale);
 
     transformationMatrix = model;
+}
+
+bool BasicObject::operator==(const BasicObject& other) const {
+    // Comparez les membres de l'objet de base un par un
+    return (
+        position == other.position &&
+        rotation == other.rotation &&
+        scale == other.scale &&
+        transformationMatrix == other.transformationMatrix
+    );
 }
