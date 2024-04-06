@@ -1,9 +1,9 @@
-#include <Basic/Window.hpp>
+#include <Core/Window.hpp>
 #include <Renderer/MinimalRrenderer.hpp>
 #include <Object3D/SimpleObject/Cube.hpp>
 #include <Object3D/Group.hpp>
-#include <Error/EngineError.hpp>
-#include <Basic/FPSCounter.hpp>
+#include <Core/Error/EngineError.hpp>
+#include <Core/FPSCounter.hpp>
 #include <iostream>
 #include <string>
 #include <glad/glad.h>
@@ -33,6 +33,7 @@ int main(int argc, char *argv[]) {
     grp1.add(&cube2);
 
     Camera camera = Camera();
+    camera.lookAt(glm::vec3(0.0f, 0.0f, 0.0f));
     camera.setScreenSize(1920, 1080);
     camera.setPosition(glm::vec3(-2, 0, 0));
     counter.start();
@@ -53,7 +54,7 @@ int main(int argc, char *argv[]) {
         rotateValueCube2.y += (360.0f / 10.0f) * delta;
         rotateValueCube2.x += (360.0f / 10.0f) * delta;
 
-        rotateValue.y += (360.0f / 10.0f) * delta;
+        // rotateValue.y += (360.0f / 10.0f) * delta;
         rotateValue.x += (360.0f / 10.0f) * delta;
 
         cube1.setRotation(rotateValueCube1);

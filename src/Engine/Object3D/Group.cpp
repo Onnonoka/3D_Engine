@@ -29,11 +29,11 @@ size_t Group::getNumberOfChildren() const {
     return childrens.size();
 }
 
-void Group::render(const Camera& camera, const glm::mat4 parentModelMatrix, const GLuint shaderProgram) {
+void Group::render(const glm::mat4 parentModelMatrix, const GLuint shaderProgram) {
     
     glm::mat4 global_transform = parentModelMatrix * getTransformationMatrix();
     for (Object3D* child : getChildrens()) {
-        child->render(camera, global_transform, shaderProgram);
+        child->render(global_transform, shaderProgram);
     }
 }
 

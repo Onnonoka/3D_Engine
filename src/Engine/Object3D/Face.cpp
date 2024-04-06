@@ -1,5 +1,5 @@
 #include <Object3D/Face.hpp>
-#include <Error/EngineError.hpp>
+#include <Core/Error/EngineError.hpp>
 #include <algorithm>
 
 Face::Face(const std::vector<Point> newPoints) {

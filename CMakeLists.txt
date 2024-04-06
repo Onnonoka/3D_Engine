@@ -32,13 +32,12 @@ set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/libs/OpenGL/src/glad.c
     # main
     ${SOURCE_DIR}/main.cpp
-    # Engine Error
-    ${SOURCE_DIR}/Engine/Error/EngineError.cpp
-    # Engine Basic
-    ${SOURCE_DIR}/Engine/Basic/Window.cpp
-    ${SOURCE_DIR}/Engine/Basic/FPSCounter.cpp
-    ${SOURCE_DIR}/Engine/Basic/Color.cpp
-    ${SOURCE_DIR}/Engine/Basic/Dirty.cpp
+    # Engine Core
+    ${SOURCE_DIR}/Engine/Core/Window.cpp
+    ${SOURCE_DIR}/Engine/Core/FPSCounter.cpp
+    ${SOURCE_DIR}/Engine/Core/Color.cpp
+    ${SOURCE_DIR}/Engine/Core/Dirty.cpp
+    ${SOURCE_DIR}/Engine/Core/Error/EngineError.cpp
     # Engine Renderer
     ${SOURCE_DIR}/Engine/Renderer/Renderer.cpp
     ${SOURCE_DIR}/Engine/Renderer/MinimalRenderer.cpp

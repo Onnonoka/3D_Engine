@@ -1,5 +1,5 @@
 #include <Object3D/BasicObject.hpp>
-#include <Basic/Color.hpp>
+#include <Core/Color.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/constants.hpp>
 #include <iostream>

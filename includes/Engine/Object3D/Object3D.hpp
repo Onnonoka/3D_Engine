@@ -4,6 +4,7 @@
 #include <Object3D/Geometry.hpp>
 #include <Material/Material.hpp>
 #include <Object3D/Camera.hpp>
+#include <Core/Renderable.hpp>
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 #include <vector>
@@ -13,7 +14,7 @@
 /**
  * @brief Represents a 3D object with position, rotation, and scale.
  */
-class Object3D : public BasicObject {
+class Object3D : public BasicObject, public Renderable {
 public:
     /**
      * @brief Constructs an Object3D with optional initial position, rotation, and scale.
@@ -83,7 +84,7 @@ public:
      * @param parentModelMatrix The parent model matrix representing the transformation of the parent object.
      * @param shaderProgram The shader program to use for rendering.
      */
-    virtual void render(const Camera& camera, const glm::mat4 parentModelMatrix, const GLuint shaderProgram);
+    virtual void render(const glm::mat4 parentModelMatrix, const GLuint shaderProgram) override;
 
 protected:
     /**

@@ -1,5 +1,5 @@
 #include <Material/Material.hpp>
-#include <Error/EngineError.hpp>
+#include <Core/Error/EngineError.hpp>
 
 Material::Material(Color newDefaultColor) {
     defaultColor = newDefaultColor;

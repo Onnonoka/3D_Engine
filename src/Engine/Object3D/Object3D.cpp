@@ -1,6 +1,6 @@
 #include <Object3D/Object3D.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <Error/EngineError.hpp>
+#include <Core/Error/EngineError.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 #include <algorithm>
@@ -171,7 +171,7 @@ bool Object3D::operator==(const Object3D& other) const {
     );
 }
 
-void Object3D::render(const Camera& camera, const glm::mat4 parentModelMatrix, const GLuint shaderProgram) {
+void Object3D::render(const glm::mat4 parentModelMatrix, const GLuint shaderProgram) {
     updateGLBuffers();
     glm::mat4 global_transform = parentModelMatrix * getTransformationMatrix();
 
@@ -180,15 +180,8 @@ void Object3D::render(const Camera& camera, const glm::mat4 parentModelMatrix, c
 
     GLuint transformMatrixLocation = glGetUniformLocation(shaderProgram, "transform");
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-    GLuint viewMatrixLocation = glGetUniformLocation(shaderProgram, "view");
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-    GLuint projectionMatrixLocation = glGetUniformLocation(shaderProgram, "projection");
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
+
     glUniformMatrix4fv(transformMatrixLocation, 1, GL_FALSE, glm::value_ptr(global_transform));
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-    glUniformMatrix4fv(viewMatrixLocation, 1, GL_FALSE, glm::value_ptr(camera.getViewMatrix()));
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-    glUniformMatrix4fv(projectionMatrixLocation, 1, GL_FALSE, glm::value_ptr(camera.getProjectionMatrix()));
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 
     glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(getGeometry().getNumberOfFaces()), GL_UNSIGNED_INT, 0);

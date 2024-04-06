@@ -4,7 +4,8 @@
 #include <glad/glad.h>
 #include <Object3D/Object3D.hpp>
 #include <Object3D/Camera.hpp>
-#include <Basic/Window.hpp>
+#include <Core/Renderable.hpp>
+#include <Core/Window.hpp>
 
 #define SHADER_PATH std::string("Engine/Shaders/")
 
@@ -16,7 +17,7 @@ public:
     /**
      * @brief Pure virtual function to render the scene.
      */
-    virtual void render(const Camera& camera, Object3D& object) = 0;
+    virtual void render(Camera& camera, Renderable& object) = 0;
 
     /**
     * @brief Destructor responsible for freeing shader resources.

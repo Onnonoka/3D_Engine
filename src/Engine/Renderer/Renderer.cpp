@@ -1,9 +1,9 @@
-#include "Renderer/Renderer.hpp"
+#include <Renderer/Renderer.hpp>
 #include <iostream> // For logs
 #include <fstream>
 #include <sstream>
 #include "glad/glad.h"
-#include <Error/EngineError.hpp>
+#include <Core/Error/EngineError.hpp>
 
 void Renderer::setBGColor(const Color color) {
     bgColor = color;

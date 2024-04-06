@@ -1,7 +1,7 @@
 #include <Object3D/Geometry.hpp>
 #include <algorithm>
 #include <iostream>
-#include <Error/EngineError.hpp>
+#include <Core/Error/EngineError.hpp>
 
 Geometry::Geometry(const std::vector<std::vector<Point>> faces) {
     createFaces(faces);

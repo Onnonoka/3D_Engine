@@ -1,6 +1,6 @@
 #include <Object3D/SimpleObject/Cube.hpp>
-#include <Basic/Color.hpp>
-#include <Error/EngineError.hpp>
+#include <Core/Color.hpp>
+#include <Core/Error/EngineError.hpp>
 #include <iostream>
 #include <memory>
 

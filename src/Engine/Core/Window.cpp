@@ -1,6 +1,6 @@
-#include "Basic/Window.hpp"
+#include "Core/Window.hpp"
 #include <iostream>
-#include <Error/EngineError.hpp>
+#include <Core/Error/EngineError.hpp>
 #include <glad/glad.h>
 
 Window::Window(int width, int height, const char* title) : width(width), height(height), title(title) {

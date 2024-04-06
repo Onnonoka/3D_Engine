@@ -1,6 +1,8 @@
+#pragma once
+
 #include <vector>
 
-typedef long DirtyField;
+typedef unsigned long DirtyField;
 
 /**
  * @brief Represents a dirty flag manager to track changes in multiple flags.
@@ -41,6 +43,13 @@ public:
      * @param index The index of the dirty flag to clean.
      */
     void cleanDirtyFlag(const unsigned int index);
+    
+    /**
+     * @brief Retrieves the dirty flags.
+     * 
+     * @return The dirty flags.
+     */
+    DirtyField getDirtyFlags() const;
 
 protected:
     /**
@@ -54,13 +63,6 @@ protected:
      * @param index The index of the dirty flag to set.
      */
     void makeDirty(const unsigned int index);
-
-    /**
-     * @brief Retrieves the dirty flags.
-     * 
-     * @return The dirty flags.
-     */
-    DirtyField getDirtyFlags() const;
 
 private:
     DirtyField dirtyFlags; ///< Bitset representing the dirty flags.

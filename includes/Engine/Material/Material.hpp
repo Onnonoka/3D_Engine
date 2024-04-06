@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Basic/Color.hpp>
+#include <Core/Color.hpp>
 #include <Object3D/Geometry.hpp>
 #include <Object3D/Point.hpp>
 #include <unordered_map>

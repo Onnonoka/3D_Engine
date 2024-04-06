@@ -1,4 +1,4 @@
-#include <Basic/Color.hpp>
+#include <Core/Color.hpp>
 
 // Definition of basic colors
 const Color Color::Red = Color(1.0f, 0.0f, 0.0f);

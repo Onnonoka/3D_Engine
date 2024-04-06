@@ -2,7 +2,7 @@
 
 #include <Object3D/BasicObject.hpp>
 #include <Object3D/Face.hpp>
-#include <Basic/Dirty.hpp>
+#include <Core/Dirty.hpp>
 #include <vector>
 #include <memory>
 

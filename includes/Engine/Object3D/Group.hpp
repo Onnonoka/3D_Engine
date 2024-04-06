@@ -10,7 +10,7 @@
  * The Group class represents a collection of objects. It provides methods to add, remove, and retrieve objects
  * from the group, as well as clearing the group.
  */
-class Group : public Object3D {
+class Group : public BasicObject, public Renderable {
 public:
     /**
      * @brief Default constructor for the Group class.
@@ -67,7 +67,7 @@ public:
      * @param parentModelMatrix The parent model matrix representing the transformation of the parent object.
      * @param shaderProgram The shader program to use for rendering.
      */
-    void render(const Camera& camera, const glm::mat4 parentModelMatrix, const GLuint shaderProgram) override;
+    void render(const glm::mat4 parentModelMatrix, const GLuint shaderProgram) override;
 
     /**
      * @brief Checks if this group is equal to another group.

@@ -1,6 +1,6 @@
 #include <Renderer/MinimalRrenderer.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include <Error/EngineError.hpp>
+#include <Core/Error/EngineError.hpp>
 #include <iostream>
 
 MinimalRenderer::MinimalRenderer() {
@@ -13,7 +13,7 @@ MinimalRenderer::MinimalRenderer() {
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 }
 
-void MinimalRenderer::render(const Camera& camera, Object3D& object) {
+void MinimalRenderer::render(Camera& camera, Renderable& object) {
     
     glUseProgram(shaderProgram);
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR, {std::to_string(static_cast<unsigned int>(shaderProgram))});
@@ -21,7 +21,10 @@ void MinimalRenderer::render(const Camera& camera, Object3D& object) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 
+    camera.updateGLUiniform();
+    camera.render(shaderProgram);
+
     glm::mat4 initialPoisiton(1.0f);
     
-    object.render(camera, initialPoisiton, shaderProgram);
+    object.render(initialPoisiton, shaderProgram);
 }
