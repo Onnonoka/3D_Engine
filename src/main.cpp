@@ -10,7 +10,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/gtc/constants.hpp>
 
-int main(int argc, char *argv[]) {
+int main() {
     Window window(1920, 1080, "OpenGL Window");  
     MinimalRenderer renderer = MinimalRenderer();
 

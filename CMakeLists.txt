@@ -13,6 +13,16 @@ else()
     set(BUILD_TYPE_DIR "Release")
 endif()
 
+# # Active tous les avertissements pour le compilateur gcc ou clang
+# if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+#     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+# endif()
+
+# # Active tous les avertissements pour le compilateur MSVC
+# if (MSVC)
+#     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+# endif()
+
 set(TEMP_DIR ${BUILD_DIR}/temp)
 
 # Création des répertoires s'ils n'existent pas déjà

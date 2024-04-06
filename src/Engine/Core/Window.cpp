@@ -4,7 +4,6 @@
 #include <glad/glad.h>
 
 Window::Window(int width, int height, const char* title) : width(width), height(height), title(title) {
-    char test;
     Window::glInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
@@ -15,7 +14,6 @@ Window::Window(int width, int height, const char* title) : width(width), height(
     if (window == NULL) {
         std::cerr << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
-        std::cin >> test;
         std::exit(EXIT_FAILURE);
     }
     setCurrentWindow();
@@ -44,6 +42,7 @@ void Window::processInput() {
 }
 
 void Window::framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+    (void)window;
     glViewport(0, 0, width, height);
 }
 

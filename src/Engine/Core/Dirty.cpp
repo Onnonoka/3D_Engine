@@ -3,7 +3,7 @@
 #include <limits>
 
 Dirty::Dirty() {
-    dirtyFlags = 0L;
+    dirtyFlags = 0UL;
 }
 
 bool Dirty::isDirty() const {
@@ -14,7 +14,7 @@ bool Dirty::isDirty(const unsigned int index) const {
     if (index > std::numeric_limits<DirtyField>::digits) {
         ENGINE_CRITICAL_ERROR(GET_CTX_ERROR, EngineError::DIRTY_OUT_OF_RANGE);
     }
-    return (dirtyFlags & (1 << index)) == (1 << index);
+    return (dirtyFlags & (1UL << index)) == (1UL << index);
 }
 
 void Dirty::makeDirty() {
@@ -25,7 +25,7 @@ void Dirty::makeDirty(const unsigned int index) {
     if (index > std::numeric_limits<DirtyField>::digits) {
         ENGINE_CRITICAL_ERROR(GET_CTX_ERROR, EngineError::DIRTY_OUT_OF_RANGE);
     }
-    dirtyFlags = dirtyFlags | (1 << index);
+    dirtyFlags = dirtyFlags | (1UL << index);
 }
 
 void Dirty::cleanDirtyFlags() {
@@ -36,7 +36,7 @@ void Dirty::cleanDirtyFlag(const unsigned int index) {
     if (index > std::numeric_limits<long>::digits) {
         ENGINE_CRITICAL_ERROR(GET_CTX_ERROR, EngineError::DIRTY_OUT_OF_RANGE);
     }
-    dirtyFlags = dirtyFlags & ~(1 << index);
+    dirtyFlags = dirtyFlags & ~(1UL << index);
 }
 
 DirtyField Dirty::getDirtyFlags() const {
