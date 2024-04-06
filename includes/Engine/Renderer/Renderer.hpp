@@ -3,7 +3,7 @@
 #include <string>
 #include <glad/glad.h>
 #include <Object3D/Object3D.hpp>
-#include <Object3D/Camera.hpp>
+#include <Camera/Camera.hpp>
 #include <Core/Renderable.hpp>
 #include <Core/Window.hpp>
 
@@ -25,8 +25,16 @@ public:
     */
     ~Renderer();
 
+    /**
+     * @brief Sets the background color.
+     * @param color The color to set as the background color.
+     */
     void setBGColor(const Color color = Color::LightGray);
     
+    /**
+     * @brief Retrieves the background color.
+     * @return The background color.
+     */
     Color getBGColor() const;
 
 protected:
@@ -38,10 +46,9 @@ protected:
     Color bgColor = Color::LightGray;   ///< The background color.
 
     /**
-     * Loads and compiles shaders from the specified files, then creates the shader program.
+     * @brief Loads and compiles shaders from the specified files, then creates the shader program.
      * @param vertexShaderFile   Path to the vertex shader file.
      * @param fragmentShaderFile Path to the fragment shader file.
      */
     void loadShaders(const std::string& vertexShaderFile, const std::string& fragmentShaderFile);
-
 };

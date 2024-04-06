@@ -16,53 +16,6 @@ GLuint Object3D::getVAO() const {
     return VAO;
 }
 
-void Object3D::createGLBuffers() {
-    // Create VAO, VBO and EBO
-    glCreateBuffers(1, &EBO);
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-    glCreateBuffers(1, &VBO);
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-    glCreateBuffers(1, &CBO);
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-    glCreateVertexArrays(1, &VAO);
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-
-    // Put data in element buffers
-    glNamedBufferData(VBO, geometry.getArrayBufferDataSize(), geometry.getArrayBufferData().data(), GL_STATIC_DRAW);
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-
-    glNamedBufferData(EBO, geometry.getIndexBufferDataSize(), geometry.getIndexBufferData().data(), GL_STATIC_DRAW);
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-
-    // Binding element buffers to VAO
-    glEnableVertexArrayAttrib(VAO, 0);
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-    glVertexArrayAttribBinding(VAO, 0, 0);
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-    glVertexArrayAttribFormat(VAO, 0, 3, GL_FLOAT, GL_FALSE, 0);
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-    glVertexArrayVertexBuffer(VAO, 0, VBO, 0, sizeof(glm::vec3));
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-
-    if (glIsBuffer(CBO)) {
-        glNamedBufferData(CBO, material.getMaterialBufferDataSize(), material.getMaterialBufferData().data(), GL_STATIC_DRAW);
-        CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-
-        glEnableVertexArrayAttrib(VAO, 1);
-        glVertexArrayAttribBinding(VAO, 1, 1);
-        CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-        
-        glVertexArrayAttribFormat(VAO, 1, 3, GL_FLOAT, GL_FALSE, 0);
-        CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-
-        glVertexArrayVertexBuffer(VAO, 1, CBO, 0, sizeof(Color));
-        CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-
-    }
-    glVertexArrayElementBuffer(VAO, EBO);
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-}
-
 void Object3D::clearBuffers() {
     glDeleteBuffers(1, &VBO);
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);

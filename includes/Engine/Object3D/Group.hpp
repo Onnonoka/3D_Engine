@@ -58,12 +58,12 @@ public:
      */
     std::vector<Object3D*> getChildrens();
 
+
     /**
      * @brief Renders the group of objects.
      * 
-     * Renders all the children objects of the group using the specified camera, parent model matrix, and shader program.
+     * Renders all the children objects of the group using the specified parent model matrix, and shader program.
      * 
-     * @param camera The camera to use for rendering.
      * @param parentModelMatrix The parent model matrix representing the transformation of the parent object.
      * @param shaderProgram The shader program to use for rendering.
      */
@@ -80,5 +80,5 @@ public:
     bool operator==(const Group& other) const;
 
 private:
-    std::vector<Object3D*> childrens; ///< Vector containing the children objects of the group.
+    std::vector<Object3D*> childrens;   ///< Vector containing the children objects of the group.
 };

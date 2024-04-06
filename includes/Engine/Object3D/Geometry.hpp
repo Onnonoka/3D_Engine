@@ -12,11 +12,17 @@
 class Geometry : public Dirty {
 public:
 
+    /**
+     * @brief Enum representing dirty fields for geometry updates.
+     */
     enum DirtyField {
-        VERTICES = 0,
-        INDICES = 1
+        VERTICES = 0,    ///< Vertices of the geometry
+        INDICES = 1      ///< Indices of the geometry
     };
 
+    /**
+     * @brief Default constructor for Geometry class.
+     */
     Geometry() = default;
 
     /**

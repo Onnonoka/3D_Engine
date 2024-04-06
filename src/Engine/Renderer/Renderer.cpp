@@ -7,6 +7,8 @@
 
 void Renderer::setBGColor(const Color color) {
     bgColor = color;
+    glClearColor(bgColor.r, bgColor.g, bgColor.b, 1.0f);
+    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 }
 
 Color Renderer::getBGColor() const {

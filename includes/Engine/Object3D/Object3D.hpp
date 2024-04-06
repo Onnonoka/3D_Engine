@@ -3,7 +3,7 @@
 #include <Object3D/BasicObject.hpp>
 #include <Object3D/Geometry.hpp>
 #include <Material/Material.hpp>
-#include <Object3D/Camera.hpp>
+#include <Camera/Camera.hpp>
 #include <Core/Renderable.hpp>
 #include <glm/glm.hpp>
 #include <glad/glad.h>
@@ -76,22 +76,14 @@ public:
     bool operator==(const Object3D& other) const;
 
     /**
-     * @brief Renders the object using the specified camera and parent model matrix.
+     * @brief Renders the group of objects.
      * 
-     * This function renders the object using the provided camera and parent model matrix.
+     * Renders all the children objects of the group using the specified parent model matrix, and shader program.
      * 
-     * @param camera The camera to use for rendering.
      * @param parentModelMatrix The parent model matrix representing the transformation of the parent object.
      * @param shaderProgram The shader program to use for rendering.
      */
-    virtual void render(const glm::mat4 parentModelMatrix, const GLuint shaderProgram) override;
-
-protected:
-    /**
-     * @brief Creates OpenGL buffers for the object's geometry data.
-     * This function is internally used to generate Vertex Array, Vertex Buffer, and Element Buffer Objects.
-     */
-    void createGLBuffers();
+    void render(const glm::mat4 parentModelMatrix, const GLuint shaderProgram) override;
 
 private:
 

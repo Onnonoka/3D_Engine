@@ -45,8 +45,16 @@ public:
 };
 
 namespace std {
+    /**
+     * @brief Hash function specialization for the Point class.
+     */
     template <>
     struct hash<Point> {
+        /**
+         * @brief Calculates the hash value for a Point object.
+         * @param p The Point object.
+         * @return The hash value.
+         */
         std::size_t operator()(const Point& p) const {
             // Combine the hash values of x, y, and z using XOR (^) to reduce collisions
             std::size_t hashValue = 0;

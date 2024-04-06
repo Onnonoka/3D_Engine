@@ -9,22 +9,26 @@ MinimalRenderer::MinimalRenderer() {
     loadShaders(vertexShaderPath, fragmentShaderPath);
     glEnable(GL_DEPTH_TEST);
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-    glClearColor(getBGColor().r, getBGColor().g, getBGColor().b, 1.0f); // Gris clair (R, G, B)
+    glClearColor(getBGColor().r, getBGColor().g, getBGColor().b, 1.0f);
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 }
 
 void MinimalRenderer::render(Camera& camera, Renderable& object) {
-    
+    // Activate the shader program
     glUseProgram(shaderProgram);
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR, {std::to_string(static_cast<unsigned int>(shaderProgram))});
 
+    // Clear the color and depth buffers
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 
+    // Initialize the position matrix
+    glm::mat4 initialPoisiton(1.0f);
+
+    // Update the uniform variables related to the camera
     camera.updateGLUiniform();
     camera.render(shaderProgram);
 
-    glm::mat4 initialPoisiton(1.0f);
-    
+    // Render the object using the initialized position matrix and the shader program
     object.render(initialPoisiton, shaderProgram);
 }

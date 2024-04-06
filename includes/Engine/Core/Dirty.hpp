@@ -1,7 +1,5 @@
 #pragma once
 
-#include <vector>
-
 typedef unsigned long DirtyField;
 
 /**
