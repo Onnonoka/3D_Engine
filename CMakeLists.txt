@@ -45,7 +45,7 @@ file(GLOB_RECURSE SOURCES
     "${SOURCE_DIR}/Engine/Renderer/*.cpp"
     "${SOURCE_DIR}/Engine/Camera/*.cpp"
     "${SOURCE_DIR}/Engine/Object3D/*.cpp"
-    "${SOURCE_DIR}/Engine/Object3D/SimpleObject/*.cpp"
+    "${SOURCE_DIR}/Engine/Object3D/Sample/*.cpp"
     "${SOURCE_DIR}/Engine/Material/*.cpp"
 )
 

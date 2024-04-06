@@ -1,6 +1,6 @@
 #include <Core/Window.hpp>
 #include <Renderer/MinimalRrenderer.hpp>
-#include <Object3D/SimpleObject/Cube.hpp>
+#include <Object3D/Sample/Cube.hpp>
 #include <Object3D/Group.hpp>
 #include <Core/Error/EngineError.hpp>
 #include <Core/FPSCounter.hpp>

@@ -1,4 +1,4 @@
-#include <Object3D/SimpleObject/Cube.hpp>
+#include <Object3D/Sample/Cube.hpp>
 #include <Core/Color.hpp>
 #include <Core/Error/EngineError.hpp>
 #include <iostream>
