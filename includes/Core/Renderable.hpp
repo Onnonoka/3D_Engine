@@ -1,7 +1,10 @@
 #pragma once
 
+// #include <Renderer/Renderer.hpp>
 #include <glm/glm.hpp>
 #include <glad/glad.h>
+
+class Renderer;
 
 /**
  * @brief Abstract class representing a renderable object.
@@ -22,5 +25,5 @@ public:
      * It performs rendering of the object using the specified parent model
      * matrix and shader program.
      */
-    virtual void render(const glm::mat4 parentModelMatrix, const GLuint shaderProgram) = 0;
+    virtual void render(const glm::mat4 parentModelMatrix, const Renderer& renderer) = 0;
 };

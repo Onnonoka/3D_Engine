@@ -5,6 +5,15 @@
 #include "glad/glad.h"
 #include <Core/Error/EngineError.hpp>
 
+Renderer::Renderer(const Color color) {
+    setBGColor(color);
+}
+
+Renderer::~Renderer() {
+    glDeleteProgram(shaderProgram);
+    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
+}
+
 void Renderer::setBGColor(const Color color) {
     bgColor = color;
     glClearColor(bgColor.r, bgColor.g, bgColor.b, 1.0f);
@@ -13,6 +22,10 @@ void Renderer::setBGColor(const Color color) {
 
 Color Renderer::getBGColor() const {
     return bgColor;
+}
+
+const GLuint Renderer::getProgram() const {
+    return shaderProgram;
 }
 
 void Renderer::loadShaders(const std::string& vertexShaderFile, const std::string& fragmentShaderFile) {
@@ -89,7 +102,3 @@ void Renderer::loadShaders(const std::string& vertexShaderFile, const std::strin
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 }
 
-Renderer::~Renderer() {
-    glDeleteProgram(shaderProgram);
-    CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
-}

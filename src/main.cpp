@@ -33,9 +33,9 @@ int main() {
     grp1.add(&cube2);
 
     Camera camera = Camera();
-    camera.lookAt(glm::vec3(0.0f, 0.0f, 0.0f));
     camera.setScreenSize(1920, 1080);
     camera.setPosition(glm::vec3(-2, 0, 0));
+    camera.lookAt(glm::vec3(0.0f, 0.0f, 0.0f));
     counter.start();
     
     while (!window.shouldClose()) {
@@ -54,8 +54,9 @@ int main() {
         rotateValueCube2.y += (360.0f / 10.0f) * delta;
         rotateValueCube2.x += (360.0f / 10.0f) * delta;
 
-        // rotateValue.y += (360.0f / 10.0f) * delta;
         rotateValue.x += (360.0f / 10.0f) * delta;
+        // rotateValue.y += (360.0f / 10.0f) * delta;
+        // rotateValue.z += (360.0f / 10.0f) * delta;
 
         cube1.setRotation(rotateValueCube1);
         cube2.setRotation(rotateValueCube2);

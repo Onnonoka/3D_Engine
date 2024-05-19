@@ -2,22 +2,23 @@
 
 #include <string>
 #include <glad/glad.h>
-#include <Object3D/Object3D.hpp>
+// #include <Object3D/Object3D.hpp>
 #include <Camera/Camera.hpp>
 #include <Core/Renderable.hpp>
 #include <Core/Window.hpp>
+#include <Core/Color.hpp>
 
-#define SHADER_PATH std::string("Engine/Shaders/")
+class Object3D;
+
+#define SHADER_PATH std::string("Shaders/")
 
 /**
  * @brief Abstract class defining a Renderer interface for rendering operations.
  */
 class Renderer {
 public:
-    /**
-     * @brief Pure virtual function to render the scene.
-     */
-    virtual void render(Camera& camera, Renderable& object) = 0;
+
+    Renderer(const Color color);
 
     /**
     * @brief Destructor responsible for freeing shader resources.
@@ -37,13 +38,20 @@ public:
      */
     Color getBGColor() const;
 
+    const GLuint getProgram() const;
+
+    /**
+     * @brief Pure virtual function to render the scene.
+     */
+    virtual void render(Camera& camera, Renderable& object) = 0;
+
 protected:
 
     GLuint vertexShader = 0;            ///< Vertex shader ID.
     GLuint fragmentShader = 0;          ///< Fragment shader ID.
     GLuint shaderProgram = 0;           ///< Shader program ID.
 
-    Color bgColor = Color::LightGray;   ///< The background color.
+    Color bgColor;                      ///< The background color.
 
     /**
      * @brief Loads and compiles shaders from the specified files, then creates the shader program.
@@ -51,4 +59,10 @@ protected:
      * @param fragmentShaderFile Path to the fragment shader file.
      */
     void loadShaders(const std::string& vertexShaderFile, const std::string& fragmentShaderFile);
+
+    void addBinding(int enumName, unsigned int bindingPosition, size_t dataSize);
+
+private:
+
+    
 };

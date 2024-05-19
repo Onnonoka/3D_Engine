@@ -2,12 +2,12 @@
 #include <iostream>
 #include <algorithm>
 
-void Group::add(Object3D *object) {
+void Group::add(Renderable *object) {
     childrens.push_back(object);
 }
 
-void Group::remove(const Object3D *object) {
-    std::vector<Object3D *>::iterator it = std::find(childrens.begin(), childrens.end(), object);
+void Group::remove(const Renderable *object) {
+    std::vector<Renderable *>::iterator it = std::find(childrens.begin(), childrens.end(), object);
     if (it != childrens.end()) {
         childrens.erase(it);
     }
@@ -17,11 +17,11 @@ void Group::clear() {
     childrens.clear();
 }
 
-std::vector<Object3D*> Group::getChildrens() {
+std::vector<Renderable*> Group::getChildrens() {
     return childrens;
 }
 
-Object3D& Group::getObject(unsigned int index) {
+Renderable& Group::getObject(unsigned int index) {
     return *(childrens[index]);
 }
 
@@ -29,11 +29,11 @@ size_t Group::getNumberOfChildren() const {
     return childrens.size();
 }
 
-void Group::render(const glm::mat4 parentModelMatrix, const GLuint shaderProgram) {
+void Group::render(const glm::mat4 parentModelMatrix, const Renderer& renderer) {
     
     glm::mat4 global_transform = parentModelMatrix * getTransformationMatrix();
-    for (Object3D* child : getChildrens()) {
-        child->render(global_transform, shaderProgram);
+    for (Renderable* child : getChildrens()) {
+        child->render(global_transform, renderer);
     }
 }
 

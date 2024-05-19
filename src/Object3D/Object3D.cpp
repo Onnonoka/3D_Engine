@@ -124,19 +124,21 @@ bool Object3D::operator==(const Object3D& other) const {
     );
 }
 
-void Object3D::render(const glm::mat4 parentModelMatrix, const GLuint shaderProgram) {
+void Object3D::render(const glm::mat4 parentModelMatrix, const Renderer& renderer) {
     updateGLBuffers();
     glm::mat4 global_transform = parentModelMatrix * getTransformationMatrix();
 
     glBindVertexArray(getVAO());
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 
-    GLuint transformMatrixLocation = glGetUniformLocation(shaderProgram, "transform");
+    GLuint transformMatrixLocation = glGetUniformLocation(renderer.getProgram(), "transform");
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 
     glUniformMatrix4fv(transformMatrixLocation, 1, GL_FALSE, glm::value_ptr(global_transform));
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    // CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
     glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(getGeometry().getNumberOfFaces()), GL_UNSIGNED_INT, 0);
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 

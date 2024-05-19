@@ -42,13 +42,13 @@ public:
      * @brief Retrieves the view matrix of the camera.
      * @return The view matrix.
      */
-    glm::mat4 Camera::getViewMatrix() const;
+    glm::mat4 getViewMatrix() const;
 
     /**
      * @brief Retrieves the projection matrix of the camera.
      * @return The projection matrix.
      */
-    glm::mat4 Camera::getProjectionMatrix() const;
+    glm::mat4 getProjectionMatrix() const;
 
     /**
      * @brief Sets the screen size for the camera.

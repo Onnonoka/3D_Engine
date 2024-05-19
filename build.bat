@@ -10,9 +10,9 @@ if not exist %BUILD_DIR%/temp mkdir %BUILD_DIR%/temp
 
 :: Configuration du build en fonction de l'argument passé
 if "%1"=="release" (
-    cmake -S . -B %BUILD_DIR%/temp -DCMAKE_BUILD_TYPE=Release
+    cmake -G "MinGW Makefiles" -S . -B %BUILD_DIR%/temp -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=make
     cmake --build %BUILD_DIR%/temp
 ) else (
-    cmake -S . -B %BUILD_DIR%/temp -DCMAKE_BUILD_TYPE=Debug
+    cmake -G "MinGW Makefiles" -S . -B %BUILD_DIR%/temp -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=make
     cmake --build %BUILD_DIR%/temp
 )

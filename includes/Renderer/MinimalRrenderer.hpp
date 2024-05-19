@@ -7,12 +7,13 @@
  */
 class MinimalRenderer : public Renderer {
 public:
+
     /**
      * @brief Constructs a MinimalRenderer object.
      * 
      * Initializes a MinimalRenderer object for rendering operations.
      */
-    MinimalRenderer();
+    MinimalRenderer(const Color color = Color::LightGray);
 
     /**
      * @brief Renders a 3D object using the provided camera and object.

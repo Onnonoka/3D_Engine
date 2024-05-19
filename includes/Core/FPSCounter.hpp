@@ -29,6 +29,12 @@ public:
      * @param initialFPS The initial refresh rate to set.
      */
     void setInitialFPS(int initialFPS);
+    
+    /**
+     * @brief Calculates the time difference between the last two frames.
+     * @return The time difference between the last two frames.
+     */
+    float delta() const;
 
 private:
     int frameCount = 0;                                         ///< Frame counter.

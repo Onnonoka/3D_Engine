@@ -3,7 +3,9 @@
 #include <Core/Error/EngineError.hpp>
 #include <iostream>
 
-MinimalRenderer::MinimalRenderer() {
+MinimalRenderer::MinimalRenderer(const Color color) 
+    : Renderer(color) {
+    
     std::string vertexShaderPath = SHADER_PATH + "MinimalShader.vert";
     std::string fragmentShaderPath = SHADER_PATH + "MinimalShader.frag";
     loadShaders(vertexShaderPath, fragmentShaderPath);
@@ -30,5 +32,5 @@ void MinimalRenderer::render(Camera& camera, Renderable& object) {
     camera.render(shaderProgram);
 
     // Render the object using the initialized position matrix and the shader program
-    object.render(initialPoisiton, shaderProgram);
+    object.render(initialPoisiton, *this);
 }

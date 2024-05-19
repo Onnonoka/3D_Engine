@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Object3D/BasicObject.hpp>
-#include <Object3D/Object3D.hpp>
+#include <Core/Renderable.hpp>
 
 /**
  * @class Group
@@ -22,14 +22,14 @@ public:
      * 
      * @param object The object to add to the group.
      */
-    void add(Object3D *object);
+    void add(Renderable *object);
 
     /**
      * @brief Removes an object from the group.
      * 
      * @param object The object to remove from the group.
      */
-    void remove(const Object3D *object);
+    void remove(const Renderable *object);
 
     /**
      * @brief Clears the group by removing all objects.
@@ -42,7 +42,7 @@ public:
      * @param index The index of the object to retrieve.
      * @return The object at the specified index.
      */
-    Object3D& getObject(unsigned int index);
+    Renderable& getObject(unsigned int index);
 
     /**
      * @brief Retrieves the number of children objects in the group.
@@ -56,8 +56,7 @@ public:
      * 
      * @return A vector containing pointers to the children objects in the group.
      */
-    std::vector<Object3D*> getChildrens();
-
+    std::vector<Renderable*> getChildrens();
 
     /**
      * @brief Renders the group of objects.
@@ -67,7 +66,7 @@ public:
      * @param parentModelMatrix The parent model matrix representing the transformation of the parent object.
      * @param shaderProgram The shader program to use for rendering.
      */
-    void render(const glm::mat4 parentModelMatrix, const GLuint shaderProgram) override;
+    void render(const glm::mat4 parentModelMatrix, const Renderer& renderer) override;
 
     /**
      * @brief Checks if this group is equal to another group.
@@ -80,5 +79,5 @@ public:
     bool operator==(const Group& other) const;
 
 private:
-    std::vector<Object3D*> childrens;   ///< Vector containing the children objects of the group.
+    std::vector<Renderable*> childrens;   ///< Vector containing the children objects of the group.
 };

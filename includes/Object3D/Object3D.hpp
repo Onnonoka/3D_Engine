@@ -5,6 +5,7 @@
 #include <Material/Material.hpp>
 #include <Camera/Camera.hpp>
 #include <Core/Renderable.hpp>
+#include <Renderer/Renderer.hpp>
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 #include <vector>
@@ -83,7 +84,7 @@ public:
      * @param parentModelMatrix The parent model matrix representing the transformation of the parent object.
      * @param shaderProgram The shader program to use for rendering.
      */
-    void render(const glm::mat4 parentModelMatrix, const GLuint shaderProgram) override;
+    void render(const glm::mat4 parentModelMatrix, const Renderer& renderer) override;
 
 private:
 

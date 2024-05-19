@@ -25,3 +25,7 @@ int FPSCounter::getFPS() {
 void FPSCounter::setInitialFPS(int initialFPS) {
     fps = initialFPS;
 }
+
+float FPSCounter::delta() const {
+    return 1.0f / fps;
+}

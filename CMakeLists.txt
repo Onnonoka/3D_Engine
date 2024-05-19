@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.29)
 project(OpenGLProject)
 
 # Define build paths for different build types
@@ -8,7 +8,7 @@ set(BIN_DIR ${BUILD_DIR}/bin)
 # Path for build type-specific files
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(BUILD_TYPE_DIR "Debug")
-    # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 else()
     set(BUILD_TYPE_DIR "Release")
 endif()
@@ -16,11 +16,6 @@ endif()
 # # Enable all warnings for gcc or clang compiler
 # if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 #     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
-# endif()
-
-# # Enable all warnings for MSVC compiler
-# if (MSVC)
-#     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
 # endif()
 
 set(TEMP_DIR ${BUILD_DIR}/temp)
@@ -34,23 +29,23 @@ set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # Header files location
 set(OPENGL_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libs/OpenGL/include)
-set(ENGINE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/includes/Engine)
+set(ENGINE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/includes)
 
 # List of source files
 file(GLOB_RECURSE SOURCES
     "${CMAKE_CURRENT_SOURCE_DIR}/libs/OpenGL/src/*.c"
     "${SOURCE_DIR}/*.cpp"
-    "${SOURCE_DIR}/Engine/Core/*.cpp"
-    "${SOURCE_DIR}/Engine/Core/Error/*.cpp"
-    "${SOURCE_DIR}/Engine/Renderer/*.cpp"
-    "${SOURCE_DIR}/Engine/Camera/*.cpp"
-    "${SOURCE_DIR}/Engine/Object3D/*.cpp"
-    "${SOURCE_DIR}/Engine/Object3D/Sample/*.cpp"
-    "${SOURCE_DIR}/Engine/Material/*.cpp"
+    "${SOURCE_DIR}/Core/*.cpp"
+    "${SOURCE_DIR}/Core/Error/*.cpp"
+    "${SOURCE_DIR}/Renderer/*.cpp"
+    "${SOURCE_DIR}/Camera/*.cpp"
+    "${SOURCE_DIR}/Object3D/*.cpp"
+    "${SOURCE_DIR}/Object3D/Sample/*.cpp"
+    "${SOURCE_DIR}/Material/*.cpp"
 )
 
 # Output path for binaries
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR}/${BUILD_TYPE_DIR})
 
 # Create executable
 add_executable(${PROJECT_NAME} ${SOURCES})
@@ -65,7 +60,20 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/libs/lib/libglfw3dll.a)
 
 # Copy glfw3.dll to the bin directory during compilation
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/libs/lib/glfw3.dll DESTINATION ${BIN_DIR}/${BUILD_TYPE_DIR})
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    ${CMAKE_CURRENT_SOURCE_DIR}/libs/lib/glfw3.dll
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/
+)
+
 # Copy Media and Shaders
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Media DESTINATION ${BIN_DIR}/${BUILD_TYPE_DIR})
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/Engine/Shaders DESTINATION ${BIN_DIR}/${BUILD_TYPE_DIR}/Engine)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_CURRENT_SOURCE_DIR}/Media
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Media
+)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Shaders
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Shaders
+)
