@@ -13,10 +13,10 @@ else()
     set(BUILD_TYPE_DIR "Release")
 endif()
 
-# # Enable all warnings for gcc or clang compiler
-# if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-#     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
-# endif()
+# Enable all warnings for gcc or clang compiler
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+endif()
 
 set(TEMP_DIR ${BUILD_DIR}/temp)
 
@@ -67,11 +67,6 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 )
 
 # Copy Media and Shaders
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${CMAKE_CURRENT_SOURCE_DIR}/Media
-    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Media
-)
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Shaders

@@ -11,7 +11,7 @@ VertexBuffer::VertexBuffer(size_t size, void *data) {
     glCreateBuffers(1, &vertexBufferID);
     CHECK_ENGINE_GL_ERROR(GET_CTX_ERROR);
 
-
+    setData(size, data);
 }
 
 VertexBuffer::~VertexBuffer() {
